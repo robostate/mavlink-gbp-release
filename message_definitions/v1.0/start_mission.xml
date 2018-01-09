@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<mavlink>
+	<enums>
+	</enums>
+	<messages>
+		<message id="239" name="START_MISSION">
+			<description>Start Drone mission or not ?</description>
+			<field type="uint8_t" name="mission_status">gives the mission status</field>
+		</message>
+	</messages>
+</mavlink>
