@@ -54,18 +54,6 @@ endif()
 configure_file(config.h.in config.h)
 install(FILES ${CMAKE_BINARY_DIR}/config.h DESTINATION include/${PROJECT_NAME} COMPONENT Dev)
 
-if(ODROID_CROSS_COMPILE)
-    set(C11_COMP_FLAGS "-W -pipe -O2 -mcpu=cortex-a15.cortex-a7 -D_REENTRANT -fPIC -std=c++11")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C11_COMP_FLAGS}")
-else()
-    if(JETSON_CROSS_COMPILE)
-    set(C11_COMP_FLAGS "-W -pipe -O2 -mcpu=cortex-a57 -D_REENTRANT -fPIC -std=c++11")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C11_COMP_FLAGS}")
-else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-endif()
-endif()
-
 # mavlink generation
 set(mavgen_path ${CMAKE_SOURCE_DIR}/pymavlink/tools/mavgen.py)
 set(common_xml_path ${CMAKE_SOURCE_DIR}/message_definitions/v1.0/common.xml)
